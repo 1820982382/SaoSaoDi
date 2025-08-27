@@ -3,13 +3,13 @@
   "id": "saosaodi",
   "version": "${version}",
   "name": "SaoSaoDi",
-  "description": "自动清理掉落物的模组",
+  "description": "自动清理掉落物的模组 https://github.com/1820982382/SaoSaoDi",
   "authors": [
     "Wang Ken"
   ],
   "contact": {
-    "homepage": "https://example.com/",
-    "sources": "https://github.com/example/saosaodi"
+    "homepage": "https://github.com/1820982382/SaoSaoDi",
+    "sources": "https://github.com/1820982382/SaoSaoDi"
   },
   "license": "MIT",
   "icon": "assets/saosaodi/icon.png",
