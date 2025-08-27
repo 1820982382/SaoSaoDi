@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class SaoSaoDiConfig {
             return new SaoSaoDiConfig();
         }
 
-        try (FileReader reader = new FileReader(file)) {
+        try (FileReader reader = new FileReader(file,StandardCharsets.UTF_8)) {
             return GSON.fromJson(reader, SaoSaoDiConfig.class);
         } catch (Exception e) {
             SaoSaoDi.LOGGER.error("配置文件 {} 格式错误，使用默认配置", file.getAbsolutePath(), e);
@@ -62,7 +63,7 @@ public class SaoSaoDiConfig {
         }
 
         // 3. 写入配置文件
-        try (FileWriter writer = new FileWriter(file)) {
+        try (FileWriter writer = new FileWriter(file, StandardCharsets.UTF_8)) {
             GSON.toJson(this, writer);
             SaoSaoDi.LOGGER.info("配置已成功保存到：{}", file.getAbsolutePath());
         }
