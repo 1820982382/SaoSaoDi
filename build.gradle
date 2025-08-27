@@ -1,0 +1,67 @@
+
+plugins {
+    id 'fabric-loom' version '1.11-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version = mod_version
+group = maven_group
+base {
+    archivesName = archives_base_name
+}
+
+repositories {
+    // 官方 Maven 仓库
+    mavenCentral()
+}
+
+dependencies {
+    // Minecraft 核心依赖
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    // Yarn 映射文件
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    // Fabric 加载器
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+
+    // Fabric API
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    // 用于配置文件的 Fabric 配置 API
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset 'UTF-8'
+
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = 'UTF-8'
+    // 使用 Java 21
+    it.options.release = 21
+}
+
+java {
+    withSourcesJar()
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${archives_base_name}" }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
