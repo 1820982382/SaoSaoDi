@@ -9,7 +9,7 @@ SaoSaoDi is a utility mod designed to keep your Minecraft world clean by automat
 - **Mod Version**: 1.0
 - **Minecraft Version**: 1.20.4
 - **Fabric API Required**: 0.93+1.20.4
-- **Fabric Loader Required**: 0.17.2
+- **Fabric Loader Required**: 0.17.2 or>=0.16.4
 
 ## Features
 - Automatically cleans up dropped items in the world at set intervals
